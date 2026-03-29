@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Under The Starz | Starlight Headliners</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body with stars canvas */
+body {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1c1c28 50%, #0a0a0f 100%);
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Full-screen canvas for stars */
+#star-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* behind all content */
+  pointer-events: none; /* ensure clicks pass through */
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10%;
+  position: fixed;
+  width: 100%;
+  background: rgba(10,10,15,0.95);
+  border-bottom: 1px solid #1a1a25;
+  z-index: 9999;
+}
+
+nav h1 {
+  font-family: 'Playfair Display', serif;
+  color: #d4af37;
+  font-size: 24px;
+}
+
+nav a {
+  color: #ccc;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1; /* above canvas */
+}
+
+.hero h2 {
+  font-size: 48px;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 500px;
+  color: #ccc;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.btn {
+  background: #d4af37;
+  color: black;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
+  touch-action: manipulation;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Sections */
+.section {
+  padding: 100px 10%;
+  text-align: center;
+  position: relative;
+  z-index: 1; /* above canvas */
+}
+
+.section h2 {
+  margin-bottom: 50px;
+  font-size: 32px;
+  color: #d4af37;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* Cards */
+.card {
+  background: rgba(18,18,26,0.85);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #222;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #d4af37;
+}
+
+/* Form */
+form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea, button[type="submit"] {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #1a1a25;
+  color: white;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Footer */
+footer {
+  padding: 40px 10%;
+  text-align: center;
+  color: #ccc;
+}
+
+/* Mobile Button Fix */
+button, input[type="submit"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+</style>
+</head>
+<body>
+
+<!-- Star Canvas -->
+<canvas id="star-canvas"></canvas>
+
+<!-- Navbar -->
+<nav>
+  <h1>Under The Starz</h1>
+  <div>
+    <a onclick="scrollToSection('services')">Services</a>
+    <a onclick="scrollToSection('about')">About</a>
+    <a onclick="scrollToSection('contact')">Book</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h2>Starlight Headliners ✨</h2>
+  <p>Transform your car interior into a luxury experience with custom starlight ceilings inspired by Rolls-Royce.</p>
+  <button class="btn" onclick="scrollToSection('contact')">Book Now</button>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Standard Starlight Kit</h3>
+      <p>Clean star pattern with premium fiber optics for a luxury look.</p>
+    </div>
+    <div class="card">
+      <h3>RGB Starlight</h3>
+      <p>Color-changing stars with remote control customization.</p>
+    </div>
+    <div class="card">
+      <h3>Shooting Stars Effect</h3>
+      <p>Add motion effects for a true Rolls-Royce style ceiling.</p>
+    </div>
+    <div class="card">
+      <h3>Full Custom Design</h3>
+      <p>Choose patterns, density, colors, and layout tailored to you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <h2>About</h2>
+  <p>
+    Under The Starz specializes in custom starlight headliner installations.<br>
+    We bring a luxury, Rolls-Royce inspired experience into your vehicle with precision, detail, and premium materials.<br><br>
+    ✔ Custom fiber optic installs<br>
+    ✔ Clean OEM-style finish<br>
+    ✔ Central Valley based<br>
+    ✔ DM to book
+  </p>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <h2>Book Your Install</h2>
+  <form action="https://formspree.io/f/xgoparjj" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="car" placeholder="Car Make & Model" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Tell us what you want (stars, colors, etc)" required></textarea>
+    <button class="btn" type="submit">Send Booking Request</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Under The Starz | Starlight Specialists</p>
+</footer>
+
+<script>
+/* Scroll function with offset for navbar */
+function scrollToSection(id){
+  const section = document.getElementById(id);
+  const navHeight = document.querySelector('nav').offsetHeight;
+  const offsetTop = section.offsetTop - navHeight - 20;
+  window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+}
+
+/* Star animation */
+const canvas = document.getElementById('star-canvas');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function initStars(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  stars = [];
+  for(let i=0; i<150; i++){
+    stars.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*1.5 + 0.5,
+      dx: (Math.random()-0.5)*0.2,
+      dy: (Math.random()-0.5)*0.2
+    });
+  }
+}
+
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "white";
+  for(let s of stars){
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    ctx.fill();
+    s.x += s.dx;c
+    s.y += s.dy;
+
+    if(s.x<0) s.x=canvas.width;
+    if(s.x>canvas.width) s.x=0;
+    if(s.y<0) s.y=canvas.height;
+    if(s.y>canvas.height) s.y=0;
+  }
+  requestAnimationFrame(drawStars);
+}
+
+window.addEventListener('resize', initStars);
+
+initStars();
+drawStars();
+</script>
+
+</body>
+</html>
